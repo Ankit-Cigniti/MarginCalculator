@@ -157,14 +157,22 @@
     // Variable to hold the last activity time
     var lastActivityTime = new Date().getTime();
 
-    // Event listener for mouse movement
-    document.addEventListener('mousemove', function() {
+    // Event listener for mouse movement within the HTML page
+    document.addEventListener('mousemove', function(event) {
+    // Check if the mouse movement occurs within the HTML page
+    if (event.target.tagName.toLowerCase() === 'html') {
+        // Update the last activity time
         lastActivityTime = new Date().getTime();
+    }
     });
 
     // Event listener for keyboard input
-    document.addEventListener('keydown', function() {
+    document.addEventListener('keydown', function(event) {
+    // Check if the keyboard input occurs within the HTML page
+    if (event.target.tagName.toLowerCase() === 'html') {
+        // Update the last activity time
         lastActivityTime = new Date().getTime();
+    }
     });
 
     // Event listener for beforeunload (refresh or tab close)
