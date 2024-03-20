@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+   .logo-container {
+        position: absolute;
+        top: 20px; /* Adjust top position as needed */
+        left: 20px; /* Adjust left position as needed */
+    }
+    .logo {
+        width: 100px; /* Adjust width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  footer {
+        text-align: center;
+        font-size: 0.8em; /* Adjust the font size as needed */
+        margin-top: 20px; /* Adjust top margin as needed */
+    } 
+  .form-label {
+    text-align: left;
+    margin-left: 10px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+<div class="logo-container">
+    <img class="logo" src="./Images/Cigniti.png" alt="Company Logo">
+</div>
+
+
+<div class="container">
+  <h2 style="color: blue;">Margin Calculator - Login</h2>
+  <p style="color: Brown;">Please enter the login id and password</p>
+  
+  <form id="loginForm" onsubmit="authenticate(event)">
+    <label for="username" class="form-label">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <input type="submit" value="Login">
+  </form>
+</div>
+
+<script>
+function authenticate(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get the input values
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // Predefined username and password
+  var predefinedUsername = "Cigniti";
+  var predefinedPassword = "ESG@1234";
+
+  // Check if the input values match the predefined username and password
+  if (username === predefinedUsername && password === predefinedPassword) {
+    // Redirect to the main page
+    window.location.href = "MarginCalculator.html";
+  } else {
+    // Show an error message
+    alert("Invalid username or password");
+  }
+}
+</script>
+  	<footer>
+    		<p>&copy; 2024 Cigniti Technologies. All rights reserved.</p>
+	</footer>
+</body>
+</html>
