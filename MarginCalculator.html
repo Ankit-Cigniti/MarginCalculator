@@ -153,7 +153,42 @@
             document.getElementById("aboutUsPopup").style.display = "none";
         }
     </script>
+<script>
+    // Variable to hold the last activity time
+    var lastActivityTime = new Date().getTime();
 
+    // Event listener for mouse movement
+    document.addEventListener('mousemove', function() {
+        lastActivityTime = new Date().getTime();
+    });
+
+    // Event listener for keyboard input
+    document.addEventListener('keydown', function() {
+        lastActivityTime = new Date().getTime();
+    });
+
+    // Event listener for beforeunload (refresh or tab close)
+    window.addEventListener('beforeunload', function(event) {
+        // Update the last activity time before unloading the page
+        lastActivityTime = new Date().getTime();	
+    });
+
+    // Function to check idle time and logout if needed
+    function checkIdleTime() {
+        var currentTime = new Date().getTime();
+        var idleTime = currentTime - lastActivityTime;
+        var idleSeconds = Math.floor(idleTime / 1000);
+        var maxIdleSeconds = 300; // 5 mins
+
+        if (idleSeconds > maxIdleSeconds) {
+            // Redirect to the login page or perform login action
+            window.location.href = "index.html"; // Replace "logout.html" with your logout page
+        }
+    }
+
+    // Call the checkIdleTime function every second
+    setInterval(checkIdleTime, 1000);
+</script>
         <footer>
     		<p>&copy; 2024 Cigniti Technologies. All rights reserved.</p>
 	</footer>
