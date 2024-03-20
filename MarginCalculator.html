@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin Calculator</title>
+<style>
+    /* Add your CSS styles here */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        width: 100%;
+        margin: 0 auto;
+	padding: 10px;
+    }
+    h1 {
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .logo-container {
+        position: absolute;
+        top: 20px; /* Adjust top position as needed */
+        left: 20px; /* Adjust left position as needed */
+    }
+    .logo {
+        width: 100px; /* Adjust width as needed */
+        height: auto; /* Maintain aspect ratio */
+    }
+    footer {
+        text-align: center;
+        font-size: 0.8em; /* Adjust the font size as needed */
+        margin-top: 20px; /* Adjust top margin as needed */
+    }
+    .menu-container {
+        position: absolute;
+        top: 20px; /* Adjust top position */
+        right: 20px; /* Adjust right position */
+        text-decoration: none;
+        color: blue;
+        font-weight: bold;
+    }
+    .menu-item {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+            margin-left: 10px; /* Adjust the margin between items */
+        }
+    .popup-container {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .close-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="logo-container">
+    <img class="logo" src="./Images/Cigniti.png" alt="Company Logo">
+</div>
+<div class="container">
+    <h1 style="font-weight: bold; color: blue;">Margin Calculator</h1>
+    <label for="region">Select Region:</label>
+    <select id="region" onchange="changeCurrency()">
+        <option value="">Select your region</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <option value="UK">UK</option>
+	<option value="AUS">Australia</option>
+	<option value="UAE">UAE</option>
+        <!-- Add more regions as needed -->
+    </select>
+    <p><p> <!-- Add a line gap after region drop boxhere -->
+    <p id="rateDescription"></p>    
+    <table id="rateTable">
+        <thead>
+            <tr>
+                <th>Roles</th>
+                <th>Count</th>
+                <th>Location</th>
+                <th>Duration</th>
+                <th>Min Rate (Currency)</th>
+                <th>Max Rate (Currency)</th>
+                <th>Sell Rate (Currency)</th>
+                <th>Revenue (Currency)</th>
+            </tr>
+        </thead>
+        <tbody id="rateTableBody">
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+    <button onclick="addRow()">Add Row</button>
+    <br><br>
+    <label for="contingency" style="color: ForestGreen;" >Contingency (to be added in revenue)         :</label>
+    <input type="text" id="contingency" placeholder="Enter contingency amount">
+    <br><br>
+    <label for="discount" style="color: Chocolate;">Discount (to be reduced from revenue):</label>
+    <input type="text" id="discount" placeholder="Enter discount amount">
+    <p><p> 
+    <button style="font-weight: bold; color: white; background-color: blue;" onclick="calculateTotalRevenue()">Total Revenue</button>
+    <button style="font-weight: bold; color: white; background-color: brown;" onclick="calculateGM()">Calculate Margin</button>
+    <div id="totalRevenue"></div>
+    <div id="results"></div>
+
+</div>
+<script src="./Calculator/calculations.js"></script>
+ 	
+<!-- Add the menu item here -->
+	<div class="menu-container">
+        	<a href="RateCard.html" target="_blank" class="menu-item">Rate Card</a>
+                <a href="#" class="menu-item" onclick="openAboutUsPopup()">About the Utility</a>
+    	</div>
+
+    <div class="popup-container" id="aboutUsPopup">
+        <span class="close-button" onclick="closeAboutUsPopup()">close</span>
+        <h2 style="color: red;">About the Utility</h2>
+        <p style="color: blue;">The Margin Calculator is developed using the buy rates of resources obtained from the TAG Team during August and September 2023.</p>
+	<p style="color: green;">This utility is intended solely for providing insights into deal margins. However, it does not hold authority for approval purposes.</p>
+	<p style="color: Brown;">If you encounter any issues while using this utility, please don't hesitate to reach out to the ESG Team for assistance.</p>
+        <!-- Add your content here -->
+    </div>
+
+    <script>
+        function openAboutUsPopup() {
+            document.getElementById("aboutUsPopup").style.display = "block";
+        }
+
+        function closeAboutUsPopup() {
+            document.getElementById("aboutUsPopup").style.display = "none";
+        }
+    </script>
+
+        <footer>
+    		<p>&copy; 2024 Cigniti Technologies. All rights reserved.</p>
+	</footer>
+   </body>
+</html>
