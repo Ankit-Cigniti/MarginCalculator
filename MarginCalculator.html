@@ -186,7 +186,7 @@
         var currentTime = new Date().getTime();
         var idleTime = currentTime - lastActivityTime;
         var idleSeconds = Math.floor(idleTime / 1000);
-        var maxIdleSeconds = 300; // 5 mins
+        var maxIdleSeconds = 600; // 10 mins
 
         if (idleSeconds > maxIdleSeconds) {
             // Redirect to the login page or perform login action
